@@ -1,0 +1,210 @@
+/* General Reset */
+:root {
+  --border-radius: 8px; /* Define a global border radius variable */
+}
+
+.calendar-header,
+.legend,
+.calendar-grid.weekdays,
+.day-item {
+  border-radius: var(--border-radius); /* Use the global variable */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  xmax-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%; /* Ensures it stretches across the screen */
+  box-sizing: border-box; /* Adds padding and borders to the width */
+}
+
+/* Weekly Row Layout */
+.week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 days in a week */
+  gap: 5px;
+}
+
+/* Day Item */
+.day-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 100px;
+  width: 100%; /* Ensures all day items take up equal space */
+  border-radius: 8px; /* Add rounded corners */
+}
+
+/* Hover Effect */
+.day-item:hover {
+  background-color: #f0f8ff; /* Light blue */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight Today's Day */
+.day-item.today {
+  background-color: #fffbcc; /* Yellow */
+  border: 2px solid #ffeb3b;
+  animation: pulse 1.5s infinite;
+}
+
+/* Days Outside Current Month */
+.day-item.outside {
+  background-color: #f0f0f0;
+  color: #b0b0b0;
+  border-color: #e0e0e0;
+}
+.day-item.empty {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+}
+
+/* Day Number */
+.day-number {
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+/* Events */
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.event {
+  font-size: 0.8em;
+  padding: 5px;
+  border-radius: 3px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(255, 235, 59, 0.3);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 5px;
+  }
+
+  .day-item {
+    font-size: 0.9em;
+    min-height: 80px;
+  }
+
+  .events {
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .week-row {
+    grid-template-columns: repeat(7, 1fr); /* Maintain 7 columns */
+  }
+
+  .day-item {
+    font-size: 0.8em;
+    min-height: 70px;
+  }
+}
+/* Legend Styles */
+.legend {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f7f9fc;
+  border-radius: 8px; /* Add rounded corners */
+}
+
+.legend h3 {
+  font-size: 1.2em;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+}
+/* Header Styles */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f7f9fc;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px; /* Add rounded corners */
+}
+
+.calendar-header h2 {
+  font-size: 1.5em;
+  color: #333333;
+}
+
+.nav-button {
+  background-color: #d4e4f7;
+  color: #004080;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Weekday Styles */
+.calendar-grid.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #f2f4f8;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 8px; /* Add rounded corners */
+}
+
+.weekday {
+  font-weight: bold;
+  color: #555555;
+  font-size: 0.9em;
+}

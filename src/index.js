@@ -6,7 +6,8 @@ import Calendar from './Calendar';
 import DayCal from './OldDayCal';
 import CalendarWithBeautifiedStyles from './CalendarWithBeautifiedStyles';
 import reportWebVitals from './reportWebVitals';
-import './styles.css'; // Import your CSS file here
+// import './styles.css'; // Import your CSS file here
+import './CalendarWithBeautifiedStyles.css'; // Import your CSS file here
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -18,11 +18,19 @@ const CalendarWithBeautifiedStyles = () => {
 
   // Departments and their pastel color codes
   const departments = {
-    IT: "#FFB6C1",
-    HR: "#FFDAB9",
-    FI: "#E6E6FA",
-    MA: "#B0E0E6",
-  };
+    IT: "#FFC1C1", // Soft Coral
+    HR: "#FFDEA5", // Light Apricot
+    Finance: "#D6D6F5", // Soft Lavender
+    Product: "#A2D9FF", // Light Sky Blue
+    Communications: "#FAF3DD", // Vanilla Cream
+    CaseManagement: "#B8F5D3", // Light Mint Green
+    BDD: "#FFF6A3", // Soft Yellow
+    Networking: "#C9B6E4", // Soft Lilac
+    TAP: "#FFC9C7", // Rose Quartz
+    Hijri: "#F7DC6F", // Soft Gold
+    OperationsCoordination: "#DAF5FA", // Light Aqua
+};
+
   const weekdays = [
     "Sun يوم الأحد", 
     "Mon يوم الإثنين", 
@@ -81,12 +89,27 @@ const CalendarWithBeautifiedStyles = () => {
 
       {/* Weekdays */}
       <div className="calendar-grid weekdays">
+        {weekdays.map((weekday) => {
+          // const [english, arabic] = weekday.split(" ", 2); // Split the string into Arabic and English parts
+          // Find the first space to split English and Arabic
+          const firstSpaceIndex = weekday.indexOf(" ");
+          const english = weekday.substring(0, firstSpaceIndex); // Text before the first space
+          const arabic = weekday.substring(firstSpaceIndex + 1); // Text after the first space
+          return (
+            <div key={weekday} className="weekday">
+              <div className="arabic">{arabic}</div>
+              <div className="english">{english}</div>
+            </div>
+          );
+        })}
+      </div>
+      {/* <div className="calendar-grid weekdays">
         {weekdays.map((weekday) => (
           <div key={weekday} className="weekday">
             {weekday}
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Days */}
       <div className="calendar-grid days">
@@ -149,112 +172,6 @@ const CalendarWithBeautifiedStyles = () => {
           ))}
         </ul>
       </div>
-
-      {/* Beautified Styles */}
-      <style jsx>{`
-        .calendar-container {
-          font-family: Arial, sans-serif;
-          max-width: 700px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #f9f9f9;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .calendar-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-        .month-title {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #333;
-        }
-        .nav-btn {
-          background-color: #d4f1f4;
-          color: #008cba;
-          border: none;
-          padding: 8px 12px;
-          font-size: 1rem;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: all 0.3s ease;
-        }
-        .nav-btn:hover {
-          background-color: #b2ebf2;
-        }
-        .calendar-grid {
-          display: grid;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 10px;
-          margin-bottom: 20px;
-        }
-        .weekdays {
-          font-weight: bold;
-          text-align: center;
-          color: #666;
-        }
-        .day {
-          min-width: 30px;
-          aspect-ratio: 1 / 1;
-          background-color: #fff;
-          border: 1px solid #e0e0e0;
-          padding: 5px;
-          border-radius: 4px;
-          text-align: center;
-          position: relative;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-        .outside {
-          color: #aaa;
-          background-color: #f0f0f0;
-        }
-        .today {
-          border: 2px solid #ffadad;
-        }
-        .event {
-          padding: 2px 5px;
-          border-radius: 3px;
-          font-size: 10px;
-          margin-top: 2px;
-          color: #333;
-        }
-        .selected-date {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #e0e0e0;
-          border-radius: 4px;
-          background-color: #fff;
-        }
-        .department-legend {
-          margin-top: 20px;
-          padding: 10px;
-          background-color: #fff;
-          border-radius: 4px;
-          border: 1px solid #e0e0e0;
-        }
-        .department-legend ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        .department-legend li {
-          display: flex;
-          align-items: center;
-          margin-bottom: 5px;
-        }
-        .legend-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-      `}</style>
     </div>
   );
 };

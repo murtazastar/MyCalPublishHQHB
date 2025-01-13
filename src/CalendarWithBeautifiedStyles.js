@@ -29,6 +29,8 @@ const CalendarWithBeautifiedStyles = () => {
     TAP: "#FFC9C7", // Rose Quartz
     Hijri: "#F7DC6F", // Soft Gold
     OperationsCoordination: "#DAF5FA", // Light Aqua
+    TR_Website: "#EFD6EC", // Pastel Pink Lavender
+    PMO: "#D4F1F4", // Soft Ice Blue
 };
 
   const weekdays = [

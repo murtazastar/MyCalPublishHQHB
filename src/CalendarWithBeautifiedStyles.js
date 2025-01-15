@@ -145,8 +145,9 @@ const CalendarWithBeautifiedStyles = () => {
               {dayEvents.map((event, idx) => (
                 <div
                   key={idx}
-                  className="event"
-                  style={{ backgroundColor: departments[event.department] }}
+                  className={`event department ${event.department}`}
+                  // className="event"
+                  // style={{ backgroundColor: departments[event.department] }}
                 >
                   {event.event}
                 </div>

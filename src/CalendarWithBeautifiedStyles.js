@@ -17,21 +17,36 @@ const CalendarWithBeautifiedStyles = () => {
   const [events, setEvents] = useState([]);
 
   // Departments and their pastel color codes
+//   const departments = {
+//     IT: "#FFC1C1", // Soft Coral
+//     HR: "#FFDEA5", // Light Apricot
+//     Finance: "#D6D6F5", // Soft Lavender
+//     Product: "#A2D9FF", // Light Sky Blue
+//     Communications: "#FAF3DD", // Vanilla Cream
+//     CaseManagement: "#B8F5D3", // Light Mint Green
+//     BDD: "#FFF6A3", // Soft Yellow
+//     Networking: "#C9B6E4", // Soft Lilac
+//     TAP: "#FFC9C7", // Rose Quartz
+//     Hijri: "#F7DC6F", // Soft Gold
+//     OperationsCoordination: "#DAF5FA", // Light Aqua
+//     TR_Website: "#EFD6EC", // Pastel Pink Lavender
+//     PMO: "#D4F1F4", // Soft Ice Blue
+// };
   const departments = {
-    IT: "#FFC1C1", // Soft Coral
-    HR: "#FFDEA5", // Light Apricot
-    Finance: "#D6D6F5", // Soft Lavender
-    Product: "#A2D9FF", // Light Sky Blue
-    Communications: "#FAF3DD", // Vanilla Cream
-    CaseManagement: "#B8F5D3", // Light Mint Green
-    BDD: "#FFF6A3", // Soft Yellow
-    Networking: "#C9B6E4", // Soft Lilac
-    TAP: "#FFC9C7", // Rose Quartz
-    Hijri: "#F7DC6F", // Soft Gold
-    OperationsCoordination: "#DAF5FA", // Light Aqua
-    TR_Website: "#EFD6EC", // Pastel Pink Lavender
-    PMO: "#D4F1F4", // Soft Ice Blue
-};
+    IT: "linear-gradient(135deg, #FFC1C1, #FFA3A3)", // Coral to deeper coral
+    HR: "linear-gradient(135deg, #FFDEA5, #FFD685)", // Apricot to deeper apricot
+    Finance: "linear-gradient(135deg, #D6D6F5, #BEBEE8)", // Lavender to deeper lavender
+    Product: "linear-gradient(135deg, #A2D9FF, #81C7F2)", // Sky blue to deeper blue
+    Communications: "linear-gradient(135deg, #FAF3DD, #F5E7A7)", // Vanilla cream to light yellow
+    CaseManagement: "linear-gradient(135deg, #B8F5D3, #8FEFC1)", // Mint green to deeper green
+    BDD: "linear-gradient(135deg, #FFF6A3, #FDE780)", // Yellow to deeper yellow
+    Networking: "linear-gradient(135deg, #C9B6E4, #A889D3)", // Lilac to deeper purple
+    TAP: "linear-gradient(135deg, #FFC9C7, #FFA9A8)", // Rose quartz to deeper pink
+    Hijri: "linear-gradient(135deg, #F7DC6F, #EBC65E)", // Gold to deeper gold
+    OperationsCoordination: "linear-gradient(135deg, #DAF5FA, #AEE9F2)", // Aqua to deeper blue
+    TR_Website: "linear-gradient(135deg, #EFD6EC, #D4A3D0)", // Pink lavender to deeper magenta
+    PMO: "linear-gradient(135deg, #D4F1F4, #B0E0E3)", // Ice blue to deeper teal
+  };
 
   const weekdays = [
     "Sun يوم الأحد", 

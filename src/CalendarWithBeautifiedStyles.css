@@ -1,4 +1,76 @@
-  .calendar-header {
+  /* General Body Style */
+  body {
+    font-size: 11px;
+    background-color: #F7F7FB; /* Light pastel gray-blue */
+    color: #333333; /* Dark Gray for contrast */
+    font-family: "Amiri", "Cairo", "Tajawal", "Noto Naskh Arabic", Arial, sans-serif; /* Arabic font stack */
+    margin: 0;
+    padding: 0;
+  }
+  /* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* Slightly smaller initially */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); /* Final size */
+  }
+}
+
+/* Apply Fade-in to Days */
+.day {
+  animation: fadeIn 1s ease-in-out; /* Smooth fade-in on load */
+}
+/* Apply Fade-in to Weekdays */
+.weekday {
+  animation: fadeIn 1s ease-in-out; /* Smooth fade-in on load */
+}
+  /* Month Title Styling */
+  .month-title {
+    font-size: 2rem; /* Larger size for emphasis */
+    font-weight: bold; /* Bold for prominence */
+    font-family: "Poppins", "Amiri", "Cairo", sans-serif; /* Modern font stack */
+    color: #4a90e2; /* Vibrant soft blue */
+    text-align: center; /* Center the title */
+    text-transform: capitalize; /* Capitalize for uniformity */
+    letter-spacing: 1px; /* Slight spacing for elegance */
+  }
+  .arabic {
+    font-size: 1rem;
+    color: #0066CC; /* Soft blue */
+  }
+  .english {
+    font-size: 0.85rem;
+    color: #333; /* Dark gray */
+  }
+  /* Weekdays Styling */
+  .weekday {
+    margin-bottom: 10px;
+    background-color: transparent !important;
+  }
+  .day:hover {
+    background-color: #FFF2E0; /* Light peach */
+  }
+/* Day Hover Effect */
+.day:hover,
+.weekday:hover {
+  background-color: #f0f8ff; /* Soft pastel blue */
+  transform: scale(1.05); /* Slight zoom */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.6s ease; /* Smooth transition */
+}
+
+/* Specific Highlight for Today's Hover */
+/* Today's Day Special Hover */
+.day.today:hover {
+  background-color: #ffe4b3; /* Light orange-yellow */
+  box-shadow: 0 6px 12px rgba(255, 165, 0, 0.4); /* Stronger shadow */
+  transform: scale(1.05); /* Slightly larger zoom */
+  transition: all 0.6s ease-in-out; /* Smooth easing for today */
+}
+.calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,11 +100,7 @@
     gap: 10px;
     margin-bottom: 20px;
   } */
-  .weekdays {
-    font-weight: bold;
-    text-align: center;
-    color: #666;
-  }
+
   /* .day {
     min-width: 30px;
     aspect-ratio: 1 / 1;
@@ -47,10 +115,10 @@
     flex-direction: column;
     justify-content: space-between;
   } */
-  .outside {
-    color: #aaa;
+  /* .outside {
+    color: #100e0e;
     background-color: #f0f0f0;
-  }
+  } */
   .selected-date {
     margin-top: 20px;
     padding: 10px;
@@ -113,7 +181,7 @@
   .nav-btn:hover {
     background-color: #b2ebf2;
   }
-  .calendar-grid .day {
+  .calendar-grid .day, .weekday {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,15 +205,28 @@
     text-align: center;
     color: #666;
   }
-  .outside {
-    color: #aaa;
-    background-color: #f0f0f0;
+  /* Style for Days Outside the Month */
+  .day.outside {
+    background-color: #f7f7f7; /* Light gray background */
+    color: #b0b0b0; /* Soft gray text color */
+    border: 1px solid #e0e0e0; /* Subtle border */
+    cursor: not-allowed; /* Disable pointer cursor */
+    opacity: 0.6; /* Slight transparency */
   }
-  .today {
-    background-color: #FF9999; /* Highlight color for today */
-    color: #fff; /* Ensure the text is readable */
-    border-radius: 4px; /* Optional: rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */
+  /* Highlight for Today's Date */
+  .day.today {
+    background-color: #ffebcc; /* Soft pastel yellow background */
+    color: #333333; /* Dark gray text for contrast */
+    border: 2px solid #ffa500; /* Orange border for emphasis */
+    border-radius: 4px; /* Match other day box styling */
+    font-weight: bold; /* Bold text to emphasize */
+    box-shadow: 0 2px 4px rgba(255, 165, 0, 0.3); /* Subtle orange shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+  }
+
+  .day.today:hover {
+    background-color: #ffe4b3; /* Slightly darker pastel yellow on hover */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.4); /* Enhance shadow on hover */
   }
   .event {
     padding: 4px 8px;

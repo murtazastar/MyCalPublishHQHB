@@ -274,67 +274,102 @@
 }
 
 /* Specific Styles for Each Department with Darker Fonts */
-.department.IT {
+.IT {
   background: linear-gradient(135deg, #ffc1c1, #ffa3a3); /* Coral */
   color: #8b0000; /* Dark red */
 }
 
-.department.HR {
+.HR {
   background: linear-gradient(135deg, #ffdea5, #ffd685); /* Apricot */
   color: #8b4513; /* Saddle brown */
 }
 
-.department.Finance {
+.Finance {
   background: linear-gradient(135deg, #d6d6f5, #bebee8); /* Lavender */
   color: #4b0082; /* Indigo */
 }
 
-.department.Product {
+.Product {
   background: linear-gradient(135deg, #a2d9ff, #81c7f2); /* Sky Blue */
   color: #004080; /* Navy blue */
 }
 
-.department.Communications {
+.Communications {
   background: linear-gradient(135deg, #faf3dd, #f5e7a7); /* Vanilla Cream */
   color: #5c4033; /* Dark brown */
 }
 
-.department.CaseManagement {
+.CaseManagement {
   background: linear-gradient(135deg, #b8f5d3, #8fefc1); /* Mint Green */
   color: #006400; /* Dark green */
 }
 
-.department.BDD {
+.BDD {
   background: linear-gradient(135deg, #fff6a3, #fde780); /* Yellow */
   color: #8b8000; /* Olive */
 }
 
-.department.Networking {
+.Networking {
   background: linear-gradient(135deg, #c9b6e4, #a889d3); /* Lilac */
   color: #4b0082; /* Indigo */
 }
 
-.department.TAP {
+.TAP {
   background: linear-gradient(135deg, #ffc9c7, #ffa9a8); /* Rose Quartz */
   color: #800000; /* Maroon */
 }
 
-.department.Hijri {
+.Hijri {
   background: linear-gradient(135deg, #f7dc6f, #ebc65e); /* Gold */
   color: #8b5a00; /* Dark goldenrod */
 }
 
-.department.OperationsCoordination {
+.OperationsCoordination {
   background: linear-gradient(135deg, #daf5fa, #aee9f2); /* Aqua */
   color: #007080; /* Teal */
 }
 
-.department.TR_Website {
+.TR_Website {
   background: linear-gradient(135deg, #efd6ec, #d4a3d0); /* Pink Lavender */
   color: #800080; /* Purple */
 }
 
-.department.PMO {
+.PMO {
   background: linear-gradient(135deg, #d4f1f4, #b0e0e3); /* Ice Blue */
   color: #005f73; /* Deep teal */
 }
+
+.department-legend {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 1rem;
+  color: #444;
+}
+.department-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.department-list li {
+  flex: 1 1 calc(33.33% - 20px); /* 3 columns; adjust percentage for more */
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+.legend-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .department-list li {
+    flex: 1 1 calc(50% - 20px); /* Reduce to two columns */
+  }
+}
+@media (max-width: 480px) {
+  .department-list li {
+    flex: 1 1 100%; /* Single column on very small screens */
+  }
+}
+

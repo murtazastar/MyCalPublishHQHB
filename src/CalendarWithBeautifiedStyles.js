@@ -158,7 +158,7 @@ const CalendarWithBeautifiedStyles = () => {
       </div>
 
       {/* Selected Date Details */}
-      {selectedDate && (
+      {/* {selectedDate && (
         <div className="selected-date">
           <h3>Selected Date: {format(selectedDate, "yyyy-MM-dd")}</h3>
           <ul>
@@ -176,15 +176,16 @@ const CalendarWithBeautifiedStyles = () => {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
 
       {/* Department Legend */}
       <div className="department-legend">
         <h4>Department Legend:</h4>
-        <ul>
+        <ul className="department-list">
           {Object.entries(departments).map(([department, color]) => (
             <li key={department} style={{ color: color }}>
-              <span className="legend-dot" style={{ backgroundColor: color }}></span>
+              <span className={`legend-dot ${department}`}></span>
+              {/* <span className="legend-dot" style={{ backgroundColor: color }}></span> */}
               {department}
             </li>
           ))}

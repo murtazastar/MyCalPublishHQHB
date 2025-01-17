@@ -10,6 +10,8 @@ import {
   endOfWeek,
   isToday,
 } from "date-fns";
+import { jsPDF } from "jspdf";
+import { toPng } from "html-to-image";
 
 const CalendarWithBeautifiedStyles = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -17,21 +19,6 @@ const CalendarWithBeautifiedStyles = () => {
   const [events, setEvents] = useState([]);
 
   // Departments and their pastel color codes
-//   const departments = {
-//     IT: "#FFC1C1", // Soft Coral
-//     HR: "#FFDEA5", // Light Apricot
-//     Finance: "#D6D6F5", // Soft Lavender
-//     Product: "#A2D9FF", // Light Sky Blue
-//     Communications: "#FAF3DD", // Vanilla Cream
-//     CaseManagement: "#B8F5D3", // Light Mint Green
-//     BDD: "#FFF6A3", // Soft Yellow
-//     Networking: "#C9B6E4", // Soft Lilac
-//     TAP: "#FFC9C7", // Rose Quartz
-//     Hijri: "#F7DC6F", // Soft Gold
-//     OperationsCoordination: "#DAF5FA", // Light Aqua
-//     TR_Website: "#EFD6EC", // Pastel Pink Lavender
-//     PMO: "#D4F1F4", // Soft Ice Blue
-// };
   const departments = {
     IT: "linear-gradient(135deg, #FFC1C1, #FFA3A3)", // Coral to deeper coral
     HR: "linear-gradient(135deg, #FFDEA5, #FFD685)", // Apricot to deeper apricot
@@ -89,6 +76,34 @@ const CalendarWithBeautifiedStyles = () => {
     return events.filter((event) => event.date === dayKey);
   };
 
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    const calendarElement = document.getElementById("calendar");
+
+    doc.html(calendarElement, {
+      callback: function (doc) {
+        doc.save("calendar.pdf");
+      },
+      x: 10,
+      y: 10,
+      width: 190,
+      windowWidth: 800,
+    });
+  };
+
+  const exportToImage = () => {
+    const calendarElement = document.getElementById("calendar");
+
+    toPng(calendarElement, { quality: 0.95 })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "calendar.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((error) => console.error("Failed to export image:", error));
+  };
+  //
   return (
     <div className="calendar-container">
       {/* Header */}
@@ -104,6 +119,7 @@ const CalendarWithBeautifiedStyles = () => {
         </button>
       </header>
 
+      <div id="calendar">
       {/* Weekdays */}
       <div className="calendar-grid weekdays">
         {weekdays.map((weekday) => {
@@ -156,7 +172,7 @@ const CalendarWithBeautifiedStyles = () => {
           );
         })}
       </div>
-
+      
       {/* Selected Date Details */}
       {/* {selectedDate && (
         <div className="selected-date">
@@ -192,6 +208,15 @@ const CalendarWithBeautifiedStyles = () => {
         </ul>
       </div>
     </div>
+    <div className="actions">
+        <button className="nav-btn" onClick={exportToPDF}>
+          Export to PDF
+        </button>
+        <button className="nav-btn" onClick={exportToImage}>
+          Export to Image
+        </button>
+      </div>
+      </div> 
   );
 };
 

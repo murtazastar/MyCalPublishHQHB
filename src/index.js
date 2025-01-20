@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Calendar from './Calendar';
-import DayCal from './OldDayCal';
+// import App from './App';
+// import Calendar from './Calendar';
+// import DayCal from './OldDayCal';
 import CalendarWithBeautifiedStyles from './CalendarWithBeautifiedStyles';
 import reportWebVitals from './reportWebVitals';
 // import './styles.css'; // Import your CSS file here

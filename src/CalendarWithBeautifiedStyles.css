@@ -1,3 +1,15 @@
+  @media print {
+    body {
+        font-size: 12px; /* Ensure text is readable */
+    }
+    .day, .weekday {
+        box-shadow: none !important; /* Remove shadows */
+        transform: none !important; /* Remove transformations */
+    }
+    .calendar-container {
+        background: white !important; /* Ensure solid background */
+    }
+  }
   /* General Body Style */
   body {
     font-size: 11px;
@@ -173,7 +185,7 @@
     color: #008cba;
     border: none;
     padding: 8px 12px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s ease;
@@ -229,7 +241,7 @@
     box-shadow: 0 4px 8px rgba(255, 165, 0, 0.4); /* Enhance shadow on hover */
   }
   .event {
-    padding: 4px 8px;
+    padding: 4px 2px;
     margin: 2px 0;
     border-radius: 3px;
     color: #333; /* Text color */

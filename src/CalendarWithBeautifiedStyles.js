@@ -10,8 +10,11 @@ import {
   endOfWeek,
   isToday,
 } from "date-fns";
-import { jsPDF } from "jspdf";
 import { toPng } from "html-to-image";
+// import html2pdf from "html2pdf.js";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+
 
 const CalendarWithBeautifiedStyles = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -76,21 +79,45 @@ const CalendarWithBeautifiedStyles = () => {
     return events.filter((event) => event.date === dayKey);
   };
 
-  const exportToPDF = () => {
-    const doc = new jsPDF();
-    const calendarElement = document.getElementById("calendar");
+  // const exportToPDF = () => {
+  //   const doc = new jsPDF();
+  //   const calendarElement = document.getElementById("calendar");
 
-    doc.html(calendarElement, {
-      callback: function (doc) {
-        doc.save("calendar.pdf");
-      },
-      x: 10,
-      y: 10,
-      width: 190,
-      windowWidth: 800,
-    });
-  };
+  //   doc.html(calendarElement, {
+  //     callback: function (doc) {
+  //       doc.save("calendar.pdf");
+  //     },
+  //     x: 10,
+  //     y: 10,
+  //     width: 190,
+  //     windowWidth: 800,
+  //   });
+  // };
 
+
+//   const exportToPDF = () => {
+//     const calendarElement = document.getElementById("calendar");
+
+//     html2canvas(calendarElement, {
+//         scale: 4, // Increase scale for better quality
+//         useCORS: true, // Allow cross-origin content
+//     }).then((canvas) => {
+//         const imgData = canvas.toDataURL("image/png", 1.0); // Convert canvas to image data
+//         const pdf = new jsPDF({
+//             orientation: "portrait",
+//             unit: "pt",
+//             format: "a4",
+//         });
+
+//         const pdfWidth = pdf.internal.pageSize.getWidth();
+//         const pdfHeight = (canvas.height * pdfWidth) / canvas.width; // Maintain aspect ratio
+
+//         pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+//         pdf.save("calendar.pdf");
+//     }).catch((error) => {
+//         console.error("Error exporting to PDF:", error);
+//     });
+// };
   const exportToImage = () => {
     const calendarElement = document.getElementById("calendar");
 
@@ -105,6 +132,7 @@ const CalendarWithBeautifiedStyles = () => {
   };
   //
   return (
+  <div id="calendar">
     <div className="calendar-container">
       {/* Header */}
       <header className="calendar-header">
@@ -119,7 +147,6 @@ const CalendarWithBeautifiedStyles = () => {
         </button>
       </header>
 
-      <div id="calendar">
       {/* Weekdays */}
       <div className="calendar-grid weekdays">
         {weekdays.map((weekday) => {
@@ -209,9 +236,9 @@ const CalendarWithBeautifiedStyles = () => {
       </div>
     </div>
     <div className="actions">
-        <button className="nav-btn" onClick={exportToPDF}>
+        {/* <button className="nav-btn" onClick={exportToPDF}>
           Export to PDF
-        </button>
+        </button> */}
         <button className="nav-btn" onClick={exportToImage}>
           Export to Image
         </button>

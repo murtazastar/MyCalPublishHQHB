@@ -50,12 +50,24 @@ const CalendarWithBeautifiedStyles = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("/events.json"); 
+        const response = await fetch("./MyCalPublishHQHB/events.json", {
+          headers: {
+              'Authorization': 'Bearer YOUR_TOKEN',
+              'Content-Type': 'application/json'
+          }}); 
+        // console.log({response});
+        // console.log('Final URL:', response.url);
         // File in public folder
         if (!response.ok) {
           throw new Error("Failed to load events");
         }
+        // Check if the content type is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Expected JSON, but received: ' + contentType);
+        }
         const data = await response.json();
+        // console.log({data});
         setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);

@@ -12,13 +12,13 @@ import {
 } from "date-fns";
 import { toPng } from "html-to-image";
 // import html2pdf from "html2pdf.js";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+// import { jsPDF } from "jspdf";
+// import html2canvas from "html2canvas";
 
 
 const CalendarWithBeautifiedStyles = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([]);
 
   // Departments and their pastel color codes
@@ -84,7 +84,7 @@ const CalendarWithBeautifiedStyles = () => {
 
   const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
   const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
-  const handleGoToDate = (date) => setSelectedDate(new Date(date));
+  // const handleGoToDate = (date) => setSelectedDate(new Date(date));
 
   const getEventsForDay = (day) => {
     const dayKey = format(day, "yyyy-MM-dd");
@@ -194,7 +194,7 @@ const CalendarWithBeautifiedStyles = () => {
               className={`day ${
                 format(day, "MM") !== format(currentMonth, "MM") ? "outside" : ""
               } ${isToday(day) ? "today" : ""}`}
-              onClick={() => setSelectedDate(day)}
+              // onClick={() => setSelectedDate(day)}
             >
               <span>{format(day, "d")}</span>
               {dayEvents.map((event, idx) => (
